@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-
-	<record model="ir.ui.view" id="qr_fe_account_move_view_form">
-		<field name="name">qr.fe.account.move.form</field>
-		<field name="model">account.move</field>
-		<field name="inherit_id" ref="l10n_ar_afipws_fe.view_move_form"></field>
+	<record model="ir.ui.view" id="qr_fe_account_invoice_view_form">
+		<field name="name">qr.fe.account.invoice.form</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="l10n_ar_afipws_fe.view_invoice_form"></field>
 		<field name="arch" type="xml">
-			<!-- xpath expr="//field[@name='afip_xml_response']" position="after" -->
 			<field name="afip_xml_response" position="after">
-				<field name="json_qr"></field>
-				<field name="texto_modificado_qr"></field>
+				<group>
+					<field name="json_qr"></field>
+					<field name="texto_modificado_qr"></field>
+					<field name="image_qr" widget="image" />
+				</group>
 			</field>
 		</field>
 	</record>
