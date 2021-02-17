@@ -10,7 +10,7 @@ class AccountInvoice(models.Model):
     def _compute_json_qr(self):
         for rec in self:
             dict_invoice = ''
-            if rec.type in ['out_invoice','out_refund'] and rec.state == 'paid' and rec.afip_auth_code != '':
+            if rec.type in ['out_invoice','out_refund'] and rec.state in ['open','paid'] and rec.afip_auth_code != '':
                 try:
                     dict_invoice = {
                         'ver': '1',
