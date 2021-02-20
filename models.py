@@ -11,7 +11,7 @@ class AccountMove(models.Model):
             if rec.type in ['out_invoice','out_refund'] and rec.state == 'posted' and rec.afip_auth_code != '':
                 try:
                     dict_invoice = {
-                        'ver': '1',
+                        'ver': 1,
                         'fecha': str(rec.invoice_date),
                         'cuit': int(rec.company_id.partner_id.vat),
                         'ptoVta': rec.journal_id.l10n_ar_afip_pos_number,
@@ -28,7 +28,7 @@ class AccountMove(models.Model):
                 except:
                     dict_invoice = 'ERROR'
                     pass
-                res = str(dict_invoice)
+                res = str(dict_invoice).replace("\n", "")
             else:
                 res = 'N/A'
             rec.json_qr = res
