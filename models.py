@@ -13,7 +13,7 @@ class AccountInvoice(models.Model):
             if rec.type in ['out_invoice','out_refund'] and rec.state in ['open','paid'] and rec.afip_auth_code != '':
                 try:
                     dict_invoice = {
-                        'ver': '1',
+                        'ver': 1,
                         'fecha': str(rec.date_invoice),
                         'cuit': int(rec.company_id.partner_id.main_id_number),
                         'ptoVta': rec.journal_id.point_of_sale_number,
@@ -30,7 +30,7 @@ class AccountInvoice(models.Model):
                 except:
                     dict_invoice = 'ERROR'
                     pass
-                res = str(dict_invoice)
+                res = str(dict_invoice).replace("\n", "")
             else:
                 res = 'N/A'
             rec.json_qr = res
