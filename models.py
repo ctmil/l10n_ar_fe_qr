@@ -11,19 +11,19 @@ class AccountMove(models.Model):
             if rec.type in ['out_invoice','out_refund'] and rec.state == 'posted' and rec.afip_auth_code != '':
                 try:
                     dict_invoice = {
-                        'ver': 1,
-                        'fecha': str(rec.invoice_date),
-                        'cuit': int(rec.company_id.partner_id.vat),
-                        'ptoVta': rec.journal_id.l10n_ar_afip_pos_number,
-                        'tipoCmp': int(rec.l10n_latam_document_type_id.code),
-                        'nroCmp': int(rec.name.split('-')[2]),
-                        'importe': rec.amount_total,
-                        'moneda': rec.currency_id.l10n_ar_afip_code,
-                        'ctz': rec.l10n_ar_currency_rate,
-                        'tipoDocRec': int(rec.partner_id.l10n_latam_identification_type_id.l10n_ar_afip_code),
-                        'nroDocRec': int(rec.partner_id.vat),
-                        'tipoCodAut': 'E',
-                        'codAut': rec.afip_auth_code,
+                        "ver": 1,
+                        "fecha": str(rec.invoice_date),
+                        "cuit": int(rec.company_id.partner_id.vat),
+                        "ptoVta": rec.journal_id.l10n_ar_afip_pos_number,
+                        "tipoCmp": int(rec.l10n_latam_document_type_id.code),
+                        "nroCmp": int(rec.name.split('-')[2]),
+                        "importe": rec.amount_total,
+                        "moneda": rec.currency_id.l10n_ar_afip_code,
+                        "ctz": rec.l10n_ar_currency_rate,
+                        "tipoDocRec": int(rec.partner_id.l10n_latam_identification_type_id.l10n_ar_afip_code),
+                        "nroDocRec": int(rec.partner_id.vat),
+                        "tipoCodAut": 'E',
+                        "codAut": rec.afip_auth_code,
                         }
                 except:
                     dict_invoice = 'ERROR'
