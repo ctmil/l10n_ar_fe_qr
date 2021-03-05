@@ -13,19 +13,19 @@ class AccountInvoice(models.Model):
             if rec.type in ['out_invoice','out_refund'] and rec.state in ['open','paid'] and rec.afip_auth_code != '':
                 try:
                     dict_invoice = {
-                        'ver': 1,
-                        'fecha': str(rec.date_invoice),
-                        'cuit': int(rec.company_id.partner_id.main_id_number),
-                        'ptoVta': rec.journal_id.point_of_sale_number,
-                        'tipoCmp': int(rec.document_type_id.code),
-                        'nroCmp': int(rec.display_name.split('-')[2]),
-                        'importe': rec.amount_total,
-                        'moneda': rec.currency_id.afip_code,
-                        'ctz': rec.currency_rate,
-                        'tipoDocRec': int(rec.partner_id.main_id_category_id.afip_code),
-                        'nroDocRec': int(rec.partner_id.main_id_number),
-                        'tipoCodAut': 'E',
-                        'codAut': rec.afip_auth_code,
+                        "ver": 1,
+                        "fecha": str(rec.date_invoice),
+                        "cuit": int(rec.company_id.partner_id.main_id_number),
+                        "ptoVta": rec.journal_id.point_of_sale_number,
+                        "tipoCmp": int(rec.document_type_id.code),
+                        "nroCmp": int(rec.display_name.split('-')[2]),
+                        "importe": rec.amount_total,
+                        "moneda": rec.currency_id.afip_code,
+                        "ctz": rec.currency_rate,
+                        "tipoDocRec": int(rec.partner_id.main_id_category_id.afip_code),
+                        "nroDocRec": int(rec.partner_id.main_id_number),
+                        "tipoCodAut": 'E',
+                        "codAut": rec.afip_auth_code,
                         }
                 except:
                     dict_invoice = 'ERROR'
