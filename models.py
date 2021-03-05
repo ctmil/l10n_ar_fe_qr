@@ -31,6 +31,7 @@ class AccountInvoice(models.Model):
                     dict_invoice = 'ERROR'
                     pass
                 res = str(dict_invoice).replace("\n", "")
+                res = str(dict_invoice).replace("'", "\"")
             else:
                 res = 'N/A'
             rec.json_qr = res
