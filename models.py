@@ -8,7 +8,7 @@ class AccountMove(models.Model):
     def _compute_json_qr(self):
         for rec in self:
             dict_invoice = ''
-            if rec.type in ['out_invoice','out_refund'] and rec.state == 'posted' and rec.afip_auth_code != '':
+            if rec.move_type in ['out_invoice','out_refund'] and rec.state == 'posted' and rec.afip_auth_code != '':
                 try:
                     dict_invoice = {
                         "ver": 1,
