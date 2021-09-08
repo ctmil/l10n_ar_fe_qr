@@ -35,6 +35,7 @@ class AccountMove(models.Model):
             if type(dict_invoice) == dict:
                 enc = res.encode()
                 b64 = base64.encodestring(enc)
+                b64 = str(b64).replace("\n", "")
                 rec.texto_modificado_qr = 'https://www.afip.gob.ar/fe/qr/?p=' + str(b64)
             else:
                 rec.texto_modificado_qr = 'https://www.afip.gob.ar/fe/qr/?ERROR'
